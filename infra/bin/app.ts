@@ -1,5 +1,6 @@
 import { App } from 'aws-cdk-lib';
 import { EvidenceStack } from '../lib/evidence-stack';
+import { PipelineStack } from '../lib/pipeline-stack';
 import { StaticSiteStack } from '../lib/static-site-stack';
 
 const app = new App();
@@ -19,3 +20,11 @@ for (const envName of ['staging', 'production'] as const) {
 }
 
 new EvidenceStack(app, 'TicTacToe-evidence', { env });
+
+new PipelineStack(app, 'TicTacToe-pipeline', {
+  env,
+  repoOwner: 'jgoerner-org',
+  repoName: 'tic-tac-toe',
+  branch: 'main',
+  evidenceBucketName: app.node.tryGetContext('evidenceBucketName'),
+});
