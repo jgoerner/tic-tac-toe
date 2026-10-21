@@ -23,7 +23,7 @@ new EvidenceStack(app, 'TicTacToe-evidence', { env });
 
 new PipelineStack(app, 'TicTacToe-pipeline', {
   env,
-  repoOwner: 'jgoerner-org',
+  repoOwner: 'jgoerner',
   repoName: 'tic-tac-toe',
   branch: 'main',
   evidenceBucketName: app.node.tryGetContext('evidenceBucketName'),
